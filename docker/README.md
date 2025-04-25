@@ -11,7 +11,7 @@ Simple usage of this container to compile a hello-world
 ```bash
 # create helloworld.cpp
 cat << EOF > helloworld.cpp
-#include <iostream>
+# include <iostream>
 int main() {
   std::cout << "Hello World!" << std::endl;
   return 0;
@@ -22,9 +22,9 @@ EOF
 ```bash
 # compile with docker image
 docker run \
-  --rm \
-  -v "$(pwd):$(pwd)" \
-  -u $(id -u):$(id -g) \
+  - -rm \
+  - v "$(pwd):$(pwd)" \
+  - u $(id -u):$(id -g) \
   emscripten/emsdk \
   emcc helloworld.cpp -o helloworld.js
 
@@ -44,7 +44,6 @@ Teardown of compilation command:
 |`emcc helloworld.cpp -o helloworld.js`|Execute `emcc` command with following arguments inside container, effectively compile our source code|
 
 
-
 ### Building Dockerfile
 
 This image has following optional arguments
@@ -53,16 +52,16 @@ This image has following optional arguments
 | --- | --- | --- |
 | `EMSCRIPTEN_VERSION` | `tot`<br/>(special case, tip-of-tree) | One of released version of Emscripten. For example `2.0.0`<br/> Minimal supported version is **1.39.0** |
 
-**Building**
+* *Building**
 
 This step will build Dockerfile as given tag on local machine
 ```bash
 # using docker
 docker build \
-    --network host \
-    --build-arg=EMSCRIPTEN_VERSION=1.39.17 \
-    -t emscripten/emsdk:1.39.17 \
-    -f docker/Dockerfile \
+    - -network host \
+    - -build-arg=EMSCRIPTEN_VERSION=1.39.17 \
+    - t emscripten/emsdk:1.39.17 \
+    - f docker/Dockerfile \
     .
 ```
 ```bash
@@ -70,11 +69,11 @@ docker build \
 make version=1.39.17 build test
 ```
 
-**Tagging**
+* *Tagging**
 
 In case of using `docker build` command directly, given `--tag` should match version of released Emscripten (you can see list of non-legacy versions by executing `emsdk list`).
 
-**Pushing**
+* *Pushing**
 
 This step will take local image and push to default docker registry. You need to make sure that you logged in docker cli (`docker login`) and you have rights to push to that registry.
 
@@ -123,3 +122,4 @@ If your project uses packages that this image doesn't provide you might want to:
     docker run --rm extended_emscripten ninja --version
     # 1.10.0
     ```
+

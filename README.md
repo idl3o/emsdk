@@ -41,7 +41,7 @@ important concepts to help understanding the internals of the SDK:
   called `.emscripten` within the emsdk directory. This file points to paths
   for Emscripten, Python, Clang and so on. If the configuration file points to a
   Tool in a specific directory, then that tool is denoted as being
-  **active**. This mechanism allows switching between different installed
+  * *active**. This mechanism allows switching between different installed
   tools and SDKs.
 * **emsdk**: This is the name of the manager script that Emscripten SDK is
   accessed through. Most operations are of the form `emsdk <command>`.
@@ -56,7 +56,7 @@ https://emscripten.org/docs/building_from_source/toolchain_what_is_needed.html.
 ### Mac OS X
 
 - For Intel-based Macs, macOS 10.13 or newer. For ARM64 M1 based Macs, macOS
-  11.0 or newer.
+  11. 0 or newer.
 - `java`: For running closure compiler (optional).  After installing emscripten
   via emsdk, typing 'emcc --help' should pop up a OS X dialog "Java is not
   installed. To open java, you need a Java SE 6 runtime. Would you like to
@@ -243,3 +243,4 @@ Emscripten SDK releases are no longer packaged or maintained for 32-bit systems.
 If you want to run Emscripten on a 32-bit system, you can try manually building
 the compiler. Follow the steps in the above section "Building an Emscripten tag
 or branch from source" to get started.
+
